@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prijava — Slatke narudžbe</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="prijava.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <section class="kosarica">
+            <h1>Prijava</h1>
+            <p>Prijavite se za upravljanje narudžbama.</p>
+
+            <form id="prijava-forma" class="forma-narudzbe">
+                <label for="email">Email</label>
+                <input
+                    id="email"
+                    type="email"
+                    autocomplete="username"
+                    maxlength="254"
+                    required
+                >
+
+                <label for="lozinka">Lozinka</label>
+                <input
+                    id="lozinka"
+                    type="password"
+                    autocomplete="current-password"
+                    maxlength="128"
+                    required
+                >
+
+                <button type="submit">Prijavi se</button>
+                <p id="prijava-poruka" role="status"></p>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

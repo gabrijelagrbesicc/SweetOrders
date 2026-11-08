@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slatke narudžbe</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <button id="odjava" type="button">Odjavi se</button>
+        <p id="odjava-poruka" role="status"></p>
+        <p><a href="/proizvodi.html">Dodaj proizvod u ponudu</a></p>
+        <header>
+            <p class="oznaka">TVOJA DIGITALNA KNJIGA NARUDŽBI</p>
+            <h1>Slatke narudžbe</h1>
+            <p>Sve slatke obaveze na jednom mjestu.</p>
+        </header>
+
+        <section aria-labelledby="naslov-narudzbe">
+            <div class="naslov-red">
+                <h2 id="naslov-narudzbe">Pregled narudžbi</h2>
+                <button id="osvjezi" type="button">Osvježi</button>
+            </div>
+
+            <p id="poruka" role="status"></p>
+            <div id="narudzbe" class="narudzbe"></div>
+        </section>
+    </main>
+</body>
+</html>

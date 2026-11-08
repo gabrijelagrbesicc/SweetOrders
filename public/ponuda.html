@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponuda torti i kolača</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="ponuda.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header>
+            <p class="oznaka">TORTE I KOLAČI PO NARUDŽBI</p>
+            <h1 id="naziv-slasticarke">Naša ponuda</h1>
+            <p id="opis-slasticarke"></p>
+            <p id="grad-slasticarke"></p>
+        </header>
+
+        <section aria-labelledby="naslov-ponude">
+            <h2 id="naslov-ponude">Odaberite nešto slatko</h2>
+
+            <p id="poruka-ponude" role="status">
+                Učitavanje ponude...
+            </p>
+
+            <div id="proizvodi" class="narudzbe"></div>
+        </section>
+        <section class="kosarica" aria-labelledby="naslov-kosarice">
+    <h2 id="naslov-kosarice">Vaša košarica</h2>
+
+    <p id="prazna-kosarica">Još niste odabrali proizvode.</p>
+
+    <div id="stavke-kosarice"></div>
+
+    <p class="cijena-proizvoda" id="ukupno-kosarica"
+       aria-live="polite">
+        Ukupno: 0,00 KM
+    </p>
+
+    <p>Odabir proizvoda još ne potvrđuje narudžbu ni termin.</p>
+</section>
+    <section class="kosarica" aria-labelledby="naslov-podaci">
+    <h2 id="naslov-podaci">Podaci za narudžbu</h2>
+
+    <form id="forma-narudzbe" class="forma-narudzbe">
+        <label for="ime-kupca">Ime i prezime</label>
+        <input
+            type="text"
+            id="ime-kupca"
+            name="ime"
+            autocomplete="name"
+            maxlength="100"
+            required
+        >
+
+        <label for="telefon-kupca">Broj telefona</label>
+        <input
+            type="tel"
+            id="telefon-kupca"
+            name="telefon"
+            autocomplete="tel"
+            placeholder="Npr. 063 123 456"
+            maxlength="30"
+            required
+        >
+
+        <label for="datum-preuzimanja">
+            Željeni datum i vrijeme preuzimanja
+        </label>
+        <input
+            type="datetime-local"
+            id="datum-preuzimanja"
+            name="preuzimanje"
+            required
+        >
+
+        <label for="napomena-kupca">
+            Napomena — nije obavezna
+        </label>
+        <textarea
+            id="napomena-kupca"
+            name="napomena"
+            rows="4"
+            maxlength="1000"
+            placeholder="Npr. natpis na torti, željena dekoracija ili dodatno pitanje."
+        ></textarea>
+
+        <p class="obavijest-narudzbe">
+            Preuzimanje je kod slastičarke.
+            Željeni termin vrijedi tek nakon njezine potvrde.
+        </p>
+
+        <button type="submit">Pošalji zahtjev za narudžbu</button>
+
+        <p id="poruka-narudzbe" role="status"></p>
+    </form>
+</section>
+    </main>
+</body>
+</html>

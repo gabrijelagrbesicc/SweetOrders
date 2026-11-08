@@ -1,0 +1,291 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #faf6f2;
+    color: #392c29;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+header {
+    margin-bottom: 48px;
+}
+
+.oznaka {
+    color: #905c56;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+h1 {
+    margin: 8px 0;
+    font-size: clamp(32px, 6vw, 48px);
+}
+
+header > p:last-child {
+    color: #75645e;
+}
+
+.naslov-red {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #905c56;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #754943;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.narudzbe {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 20px;
+}
+
+.kartica {
+    padding: 24px;
+    border: 1px solid #eaded6;
+    border-radius: 18px;
+    background: white;
+    overflow-wrap: anywhere;
+}
+
+.kartica h3 {
+    margin: 16px 0;
+    font-size: 24px;
+}
+
+.kartica p {
+    margin: 8px 0;
+}
+
+.status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #f3e7de;
+    color: #754943;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.ostatak {
+    margin-top: 18px !important;
+    padding-top: 14px;
+    border-top: 1px solid #eaded6;
+    font-weight: bold;
+}
+
+#poruka {
+    color: #75645e;
+}
+
+.ilustracija-proizvoda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background: #faf0e8;
+    font-size: 64px;
+}
+
+.cijena-proizvoda {
+    margin-top: 20px !important;
+    color: #905c56;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.minimum-proizvoda {
+    color: #75645e;
+    font-size: 13px;
+}
+
+.odabir-proizvoda {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.odabir-proizvoda label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.odabir-proizvoda input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9c8bd;
+    border-radius: 10px;
+    background: #fff;
+    color: #392c29;
+    font: inherit;
+}
+
+.potvrda-dodavanja {
+    color: #416448;
+    font-size: 14px;
+}
+
+.kosarica {
+    margin-top: 40px;
+    padding: 24px;
+    border: 1px solid #eaded6;
+    border-radius: 18px;
+    background: #fff;
+}
+
+.stavka-kosarice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #eaded6;
+}
+
+.stavka-kosarice p {
+    flex: 1;
+    min-width: 180px;
+    margin: 0;
+}
+
+.gumb-ukloni {
+    background: #f3e7de;
+    color: #754943;
+}
+
+.gumb-ukloni:hover {
+    background: #ead7c9;
+}
+
+.forma-narudzbe {
+    display: grid;
+    gap: 12px;
+    max-width: 600px;
+}
+
+.forma-narudzbe label {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.forma-narudzbe input,
+.forma-narudzbe textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #d9c8bd;
+    border-radius: 10px;
+    background: white;
+    color: #392c29;
+    font: inherit;
+}
+
+.forma-narudzbe textarea {
+    resize: vertical;
+}
+
+.forma-narudzbe input:focus,
+.forma-narudzbe textarea:focus {
+    outline: 2px solid #905c56;
+    outline-offset: 2px;
+}
+
+.obavijest-narudzbe {
+    padding: 14px;
+    border-radius: 10px;
+    background: #faf0e8;
+    font-size: 14px;
+}
+
+#poruka-narudzbe {
+    font-weight: bold;
+}
+
+.popis-stavki {
+    padding-left: 20px;
+}
+
+.popis-stavki li {
+    margin-bottom: 10px;
+}
+
+.akcije-narudzbe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.gumb-prihvati {
+    background: #416448;
+}
+
+.gumb-prihvati:hover {
+    background: #304d36;
+}
+
+.gumb-odbij {
+    background: #f3e0df;
+    color: #873c37;
+}
+
+.gumb-odbij:hover {
+    background: #e9cdcb;
+}
+
+.forma-narudzbe select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9c8bd;
+    border-radius: 10px;
+    background: white;
+    color: #392c29;
+    font: inherit;
+}
+
+.ilustracija-proizvoda {
+    overflow: hidden;
+}
+
+.ilustracija-proizvoda img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+

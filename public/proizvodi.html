@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dodavanje proizvoda</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="proizvodi.js" defer></script>
+</head>
+<body>
+    <section class="kosarica">
+    <div class="naslov-red">
+        <h2>Proizvodi u ponudi</h2>
+        <button id="osvjezi-proizvode" type="button">Osvježi</button>
+    </div>
+
+    <p id="popis-poruka" role="status"></p>
+    <div id="popis-proizvoda" class="narudzbe"></div>
+</section>
+<section id="uredivanje" class="kosarica" hidden>
+    <h2>Uredi proizvod</h2>
+    <p id="uredi-jedinica"></p>
+
+    <form id="uredi-forma" class="forma-narudzbe">
+        <label for="uredi-naziv">Naziv proizvoda</label>
+        <input
+            id="uredi-naziv"
+            minlength="2"
+            maxlength="150"
+            required
+        >
+
+        <label for="uredi-opis">Opis</label>
+        <textarea
+            id="uredi-opis"
+            rows="4"
+            maxlength="2000"
+        ></textarea>
+
+        <label for="uredi-cijenu">Cijena (KM)</label>
+        <input
+            id="uredi-cijenu"
+            type="number"
+            min="0.01"
+            max="99999999.99"
+            step="0.01"
+            required
+        >
+        <label for="uredi-sliku">Fotografija proizvoda</label>
+<input
+    id="uredi-sliku"
+    type="text"
+    placeholder="/slike/torta-jagoda.jpg"
+    maxlength="200"
+    aria-describedby="uputa-slika"
+>
+<p id="uputa-slika">
+    Upišite putanju fotografije iz mape public/slike.
+    Ostavite prazno ako proizvod nema fotografiju.
+</p>
+        <button type="submit">Spremi izmjene</button>
+        <button id="odustani-uredivanje" type="button">Odustani</button>
+    </form>
+
+    <p id="uredi-poruka" role="status"></p>
+</section>
+    <main class="container">
+        <a href="/index.html">← Pregled narudžbi</a>
+
+        <section class="kosarica">
+            <h1>Novi proizvod</h1>
+            <p>Spremljeni proizvod odmah će biti vidljiv kupcima.</p>
+
+            <form id="proizvod-forma" class="forma-narudzbe">
+                <label for="slasticarka">Slastičarka</label>
+                <select id="slasticarka" required>
+                    <option value="">Učitavanje...</option>
+                </select>
+
+                <label for="naziv">Naziv proizvoda</label>
+                <input id="naziv" maxlength="150"
+                       placeholder="Npr. Torta od jagoda — 12 osoba"
+                       required>
+
+                <label for="opis">Opis</label>
+                <textarea id="opis" rows="4" maxlength="2000"></textarea>
+
+                <label for="kategorija">Kategorija</label>
+                <select id="kategorija">
+                    <option value="torta">Torta</option>
+                    <option value="kolaci">Kolači</option>
+                </select>
+
+                <label for="jedinica">Prodaje se po</label>
+                <select id="jedinica">
+                    <option value="komad">Komadu</option>
+                    <option value="kg">Kilogramu</option>
+                    <option value="paket">Paketu</option>
+                </select>
+
+                <label for="cijena">Cijena po odabranoj jedinici (KM)</label>
+                <input id="cijena" type="number"
+                       min="0.01" max="99999999.99" step="0.01" required>
+
+                <label for="minimum">Minimalna količina</label>
+                <input id="minimum" type="number"
+                       min="1" max="1000" step="1" value="1" required>
+
+                <button id="spremi-proizvod" type="submit" disabled>
+                    Spremi i objavi proizvod
+                </button>
+            </form>
+
+            <p id="proizvod-poruka" role="status"></p>
+        </section>
+    </main>
+</body>
+</html>
