@@ -25,15 +25,25 @@ app.get("/api/narudzbe", async (req, res) => {
             connectString: process.env.DB_CONNECT_STRING
         });
 
-        const narudzbe = await connection.execute(
-            `SELECT *
-             FROM narudzbe
-             ORDER BY
-                CASE WHEN status = 'ceka potvrdu' THEN 0 ELSE 1 END,
-                datum_preuzimanja ASC`,
-            [],
-            { outFormat: oracledb.OUT_FORMAT_OBJECT }
-        );
+        
+const jeAdmin = req.korisnik.uloga === "admin";
+
+const filter = {
+    jeAdmin: jeAdmin ? 1 : 0,
+    slasticarkaId: req.korisnik.slasticarkaId ?? null
+};
+
+const narudzbe = await connection.execute(
+    `SELECT *
+     FROM narudzbe
+     WHERE (:jeAdmin = 1 OR slasticarka_id = :slasticarkaId)
+     ORDER BY
+         CASE WHEN status = 'ceka potvrdu' THEN 0 ELSE 1 END,
+         datum_preuzimanja ASC`,
+    filter,
+    { outFormat: oracledb.OUT_FORMAT_OBJECT }
+);
+
 
         const stavke = await connection.execute(
             `SELECT *
@@ -422,14 +432,23 @@ const prethodniStatus = prethodniStatusi[status];
             connectString: process.env.DB_CONNECT_STRING
         });
 
-        const rezultat = await connection.execute(
+        
+const rezultat = await connection.execute(
     `UPDATE narudzbe
      SET status = :status
      WHERE id = :id
-       AND status = :prethodniStatus`,
-    { status, id, prethodniStatus },
+       AND status = :prethodniStatus
+       AND (:jeAdmin = 1 OR slasticarka_id = :slasticarkaId)`,
+    {
+        status,
+        id,
+        prethodniStatus,
+        jeAdmin: req.korisnik.uloga === "admin" ? 1 : 0,
+        slasticarkaId: req.korisnik.slasticarkaId ?? null
+    },
     { autoCommit: true }
 );
+
 
         if (rezultat.rowsAffected === 0) {
             return res.status(409).json({
@@ -476,17 +495,24 @@ app.patch("/api/narudzbe/:id/placanje", async (req, res) => {
             connectString: process.env.DB_CONNECT_STRING
         });
 
-        const rezultat = await connection.execute(
-            `UPDATE narudzbe
-             SET placeno = cijena
-             WHERE id = :id
-               AND placeno < cijena
-               AND status IN (
-                   'dogovoreno', 'u izradi', 'spremno', 'preuzeto'
-               )`,
-            { id },
-            { autoCommit: true }
-        );
+        
+const rezultat = await connection.execute(
+    `UPDATE narudzbe
+     SET placeno = cijena
+     WHERE id = :id
+       AND placeno < cijena
+       AND status IN (
+           'dogovoreno', 'u izradi', 'spremno', 'preuzeto'
+       )
+       AND (:jeAdmin = 1 OR slasticarka_id = :slasticarkaId)`,
+    {
+        id,
+        jeAdmin: req.korisnik.uloga === "admin" ? 1 : 0,
+        slasticarkaId: req.korisnik.slasticarkaId ?? null
+    },
+    { autoCommit: true }
+);
+
 
         if (rezultat.rowsAffected === 0) {
             return res.status(409).json({
