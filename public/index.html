@@ -11,7 +11,9 @@
     <main class="container">
         <button id="odjava" type="button">Odjavi se</button>
         <p id="odjava-poruka" role="status"></p>
-        <p><a href="/proizvodi.html">Dodaj proizvod u ponudu</a></p>
+        <p id="admin-ponuda" hidden>
+    <a href="/proizvodi.html">Dodaj proizvod u ponudu</a>
+</p>
         <header>
             <p class="oznaka">TVOJA DIGITALNA KNJIGA NARUDŽBI</p>
             <h1>Slatke narudžbe</h1>
@@ -28,5 +30,26 @@
             <div id="narudzbe" class="narudzbe"></div>
         </section>
     </main>
+    
+<script>
+    fetch("/api/ja", {
+        credentials: "same-origin"
+    })
+    .then((odgovor) => {
+        if (!odgovor.ok) {
+            throw new Error("Korisnik nije prijavljen.");
+        }
+        return odgovor.json();
+    })
+    .then((korisnik) => {
+        if (korisnik.uloga === "admin") {
+            document.getElementById("admin-ponuda").hidden = false;
+        }
+    })
+    .catch((greska) => {
+        console.error("Provjera uloge:", greska.message);
+    });
+</script>
+
 </body>
 </html>
