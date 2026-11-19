@@ -1,12 +1,19 @@
+
 {
   "name": "slatkenarudzbe",
   "version": "1.0.0",
-  "description": "",
-  "main": "script.js",
+  "description": "Web aplikacija za narucivanje torti i kolaca",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "narudzbe",
+    "slasticarnica",
+    "torte",
+    "kolaci"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",

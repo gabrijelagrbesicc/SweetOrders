@@ -17,12 +17,14 @@ module.exports = function postaviPrijavu(app, port) {
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
-        cookie: {
-            httpOnly: true,
-            sameSite: "strict",
-            secure: false,
-            maxAge: 8 * 60 * 60 * 1000
-        }
+        
+cookie: {
+    httpOnly: true,
+    sameSite: "strict",
+    secure: process.env.NODE_ENV === "production",
+    maxAge: 8 * 60 * 60 * 1000
+}
+
     }));
 
     // ZASTITA LOKALNE APLIKACIJE

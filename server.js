@@ -851,6 +851,9 @@ app.patch("/api/admin/proizvodi/:id/dostupnost", async (req, res) => {
     }
 });
 
-app.listen(port, "127.0.0.1", () => {
-    console.log(`Server radi na http://127.0.0.1:${port}`);
+
+const host = process.env.HOST || "127.0.0.1";
+
+app.listen(port, host, () => {
+    console.log(`Server radi na http://${host}:${port}`);
 });
